@@ -7,9 +7,8 @@ function asignarManejadores(){
 }
 
 function traerPersona(){
-    var txtnombre = document.getElementById("txtNombre");
-    var txtapellido = document.getElementById("txtApellido");
-    var txtedad = document.getElementById("txtEdad");
+    var textoDiv = document.getElementById("info");
+    var lista ="";
 
     var xhr = new XMLHttpRequest();
     document.getElementById('info').innerHTML = "";
@@ -21,14 +20,12 @@ function traerPersona(){
             document.getElementById('info').appendChild(espiner);
         if(xhr.readyState==4){
             if (xhr.status==200) {
-                var coso=JSON.parse(xhr.responseText);
-                console.log(coso);
-                array.forEach(coso => {
-                txtnombre.value+= coso.nombre;
-                txtapellido.value+=coso.apellido;
-                txtedad.value+=coso.edad);  
-                });
+                var persona=JSON.parse(xhr.responseText);
                 
+                for (var i in persona) {
+
+                    document.getElementById('info').innerHTML+="<p>"+personaToString(persona[i])+"</p>";
+                }
             }
             else{
                 console.log('Error '+xhr.statusText);
@@ -40,4 +37,14 @@ function traerPersona(){
     }
     xhr.open("GET","http://localhost:3000/traerPersonas",true);
     xhr.send();
+}
+
+
+
+function personaToString(persona){
+    var cadena="";
+for(var prop in persona){
+    cadena+='<b>' + prop + ' ' + '</b>' + persona[prop] + ' ';
+}
+return cadena;
 }
