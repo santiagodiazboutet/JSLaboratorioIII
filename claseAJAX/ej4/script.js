@@ -2,7 +2,7 @@
 window.addEventListener('load',asignarManejadores,false);
 
 function asignarManejadores(){
-    document.getElementById("btnGetPersona").addEventListener('click',traerPersona(),false);
+    document.getElementById("btnGetPersona").addEventListener('click',traerPersona,false);
 
 }
 
