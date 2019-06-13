@@ -1,0 +1,11 @@
+#containerId{
+    align-self: center;
+    background-color: powderblue;
+    margin :0 auto;
+    text-align:center;
+    width:300px;
+    
+}
+body{
+    background-color:peachpuff;
+}
